@@ -1,4 +1,4 @@
-package sqlite
+package sqlcipher
 
 import (
 	"context"
@@ -6,10 +6,9 @@ import (
 	"strconv"
 	"strings"
 
-	"gorm.io/gorm/callbacks"
-
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/youthlin/go-sqlcipher"
 	"gorm.io/gorm"
+	"gorm.io/gorm/callbacks"
 	"gorm.io/gorm/clause"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/migrator"
@@ -30,7 +29,7 @@ func Open(dsn string) gorm.Dialector {
 }
 
 func (dialector Dialector) Name() string {
-	return "sqlite"
+	return dialector.DriverName
 }
 
 func (dialector Dialector) Initialize(db *gorm.DB) (err error) {

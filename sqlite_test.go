@@ -1,11 +1,11 @@
-package sqlite
+package sqlcipher
 
 import (
 	"database/sql"
 	"fmt"
 	"testing"
 
-	"github.com/mattn/go-sqlite3"
+	"github.com/youthlin/go-sqlcipher"
 	"gorm.io/gorm"
 )
 

@@ -1,4 +1,4 @@
-package sqlite
+package sqlcipher
 
 import (
 	"database/sql"
@@ -202,17 +202,6 @@ func (d *ddl) removeConstraint(name string) bool {
 	for i := 0; i < len(d.fields); i++ {
 		if reg.MatchString(d.fields[i]) {
 			d.fields = append(d.fields[:i], d.fields[i+1:]...)
-			return true
-		}
-	}
-	return false
-}
-
-func (d *ddl) hasConstraint(name string) bool {
-	reg := regexp.MustCompile("^CONSTRAINT [\"`]?" + regexp.QuoteMeta(name) + "[\"` ]")
-
-	for _, f := range d.fields {
-		if reg.MatchString(f) {
 			return true
 		}
 	}
